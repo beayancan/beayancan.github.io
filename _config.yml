@@ -111,7 +111,6 @@ author:
   bio              : "Visualización Portafolio"
   location         : "Santiago, Chile"
   email            : "beayancan@uc.cl"
-  linkedin         : "beayancan"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"

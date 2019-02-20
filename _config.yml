@@ -107,7 +107,7 @@ analytics:
 # Site Author
 author:
   name             : "Benjamín Ayancán"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/images/profile-01.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Visualización Portafolio"
   location         : "Santiago, Chile"
   email            : "beayancan@uc.cl"

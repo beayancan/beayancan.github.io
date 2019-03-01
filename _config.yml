@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Benjamín Ayancán"
 title_separator          : "-"
 name                     : "Benjamín Ayancán"
-description              : "Visualización Portafolio"
+description              : "Visualization Portafolio"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -125,7 +125,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "beayancan"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:

@@ -108,7 +108,7 @@ analytics:
 author:
   name             : "Benjamín Ayancán"
   avatar           : "/images/profile-01.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Visualización Portafolio"
+  bio              : "Visualization Portafolio"
   location         : "Santiago, Chile"
   email            : "beayancan@uc.cl"
   github           : "beayancan"

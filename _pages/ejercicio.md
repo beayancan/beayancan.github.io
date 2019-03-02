@@ -16,6 +16,6 @@ La siguiente es una prueba de visualización
 <body>
     <div id="chart"></div>
     <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src=".\index.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>

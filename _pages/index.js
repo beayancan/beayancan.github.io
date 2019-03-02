@@ -3,7 +3,7 @@ var width = 960, // determinamos el tamaño de la visualizacion
     cantidad = 800, // numero de nodos
     variabilidad = 20, // lejania del centro
     radio = 5, // radio de los circulos
-    tiempo = 5, // tiempo de la animacion
+    tiempo = 1, // tiempo de la animacion
     fuerza = -5; // cantidad de tiempo que tome en completarse
 
 var nodos = [];

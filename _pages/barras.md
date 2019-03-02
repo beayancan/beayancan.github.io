@@ -1,11 +1,10 @@
 ---
-title: "Barras"
+title: "Barras simple"
 layout: single
 excerpt: "Grafico de Barras simple."
 sitemap: false
 permalink: /cosas/barras.html
 ---
-
 
 <html lang="en">
 <head>

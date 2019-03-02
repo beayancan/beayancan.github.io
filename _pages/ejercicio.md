@@ -2,7 +2,7 @@
 title: "Ejercicio found"
 layout: single
 excerpt: "Ejercicio del canvas."
-sitemap: false
+sitemap: true
 permalink: /cosas/ejercicio.html
 ---
 

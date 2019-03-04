@@ -23,26 +23,32 @@ permalink: /cosas/barras.html
 </head>
 <body>
 	<div id="chart"></div>
-	<script>
+	<script type="text/javascript">
 		var margin = {top: 20, right: 0, bottom: 30, left: 60}, // dimensiones
-		chartWidth = 960,
-		chartHeight = 500,
-		width = chartWidth - margin.left - margin.right,
-		height = chartHeight - margin.top - margin.bottom;
+			chartWidth = 960,
+			chartHeight = 500,
+			width = chartWidth - margin.left - margin.right,
+			height = chartHeight - margin.top - margin.bottom;
+		//
 		var svg = d3.select("#chart") // seleccionamos html con id chart
 					.append('svg') // svg para la visualizacion
 					.attr('height', chartHeight)
 					.attr('width', chartWidth)
 					.append("g") // group
 					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		//
 		var xScale = d3.scaleBand() // generamos escalas de las barras en v5
 					.rangeRound([0, width])
 					.padding(0.2); // separacion
+		//
 		var yScale = d3.scaleLinear() // escala linear en v5 para el eje y
 					.rangeRound([height, 0]);
-		d3.csv("carreras.csv").then(data => { // tomamos los datos del csv de forma asincrona
+		//
+		d3.csv("https://gist.githubusercontent.com/beayancan/6dfb28398c4d70d59995f34e06b3904b/raw/d2b43603be81992d36b3340a4e088f8af8a5736b/carreras.csv").then(data => { // tomamos los datos del csv de forma asincrona
+		//
 		xScale.domain(data.map(d => d.Run)); // les entregamos el dominio a las escalas según los datos
 		yScale.domain([0, d3.max(data, d => +d.Speed)]).nice();
+		//
 		svg.selectAll("rect") // añadimos los datos generamos
 			.data(data)
 			.enter().append("rect") // utilizaremos rectangulos
@@ -51,13 +57,16 @@ permalink: /cosas/barras.html
 			.attr("y", d => yScale(+d.Speed))
 			.attr("width", xScale.bandwidth()) // posicion
 			.attr("height", d => height - yScale(+d.Speed));
+		//
 		svg.append("g") // añadimos los ejes
 			.attr("transform", "translate(0," + height + ")") // en la parte inferior
 			.call(d3.axisBottom(xScale));
+		//
 		svg.append("text") // label para el eje
 			.attr("transform", "translate (" + width/2 +"," + (height + 30) + ")")
 			.style("font-size", "14px")
 			.text("Carrera");
+		//
 		svg.append("g") // añadimos el eje y
 			.call(d3.axisLeft(yScale))
 			.append("text") // con su label

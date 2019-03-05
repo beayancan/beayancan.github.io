@@ -4,5 +4,5 @@ title: "Visualization Posts by Tags"
 permalink: /visualization/
 author_profile: true
 header:
-    image: "/images/visualization.jpg"
+    image: 
 ---

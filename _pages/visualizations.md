@@ -1,7 +1,7 @@
 ---
 layout: posts
-permalink: /visualization/
-title: "Visualization Posts by Tags"
+permalink: /visualizations/
+title: "Visualizations Posts by Tags"
 author_profile: true
 header:
   image: 

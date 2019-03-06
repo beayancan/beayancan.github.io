@@ -6,6 +6,8 @@ main:
     url: /visualization/
   - title: "Cosas"
     url: /cosas/ejercicio
+  - title: "Data Wrangling Projects"
+    url: /data-wrangling/
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
   #   url: /year-archive/

@@ -15,7 +15,9 @@ A continuación se presenta un gráfico de dispersión para comparar las notas d
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Dispersión</title>
   <script src='https://d3js.org/d3.v5.min.js' charset='utf-8'></script>
 </head>

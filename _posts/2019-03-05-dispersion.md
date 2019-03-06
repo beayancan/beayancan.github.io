@@ -101,7 +101,6 @@ A continuación se presenta un gráfico de dispersión para comparar las notas d
             .transition() // realizamos la transición
             .duration(500)
             .attr('r', radio * 2); // de aumentar al doble su tamaño y ser el unico opaco
-
       });
       //
       chart.on('mouseout', (deseado, i, circulos) => { // cuando el mouse deja de estar sobre el circulo

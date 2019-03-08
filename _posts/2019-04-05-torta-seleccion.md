@@ -1,11 +1,11 @@
 ---
 title: "Torta Selección"
 layout: single
-excerpt: "Data Visualization, Torta"
+excerpt: "Visualization, Torta"
 sitemap: false
-permalink: /visualizations/torta-seleccion.html
+permalink: /visualization/torta-seleccion.html
 date: 2019-03-05
-tags: [data visualization, torta]
+tags: [visualization, torta]
 mathjax: "true"
 ---
 

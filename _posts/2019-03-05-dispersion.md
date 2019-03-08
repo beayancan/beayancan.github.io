@@ -1,11 +1,11 @@
 ---
 title: "Dispersion"
 layout: single
-excerpt: "Data Visualization, Data Science, Dispersion"
+excerpt: "Visualization, Data Science, Dispersion"
 sitemap: false
-permalink: /visualizations/dispersion.html
+permalink: /visualization/dispersion.html
 date: 2019-03-05
-tags: [data visualization, data science, sample]
+tags: [visualization, data science, sample]
 mathjax: "true"
 ---
 

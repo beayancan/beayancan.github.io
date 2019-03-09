@@ -4,7 +4,8 @@ layout: single
 excerpt: "Visualization, Torta"
 sitemap: false
 permalink: /visualization/torta-seleccion.html
-date: 2019-03-05
+date: 2019-03-06
+
 tags: [visualization, torta]
 mathjax: "true"
 ---

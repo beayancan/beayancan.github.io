@@ -1,110 +1,102 @@
 ---
-title: "Area Múltiple"
+title: "Area Simple"
 layout: single
 excerpt: "Visualization, Area"
 sitemap: false
-permalink: /visualization/area-multiple.html
+permalink: /visualization/area-simple.html
 date: 2019-03-09
 tags: [visualization, area]
 mathjax: "true"
 ---
 
-## Gráfico de dispersion para distintas opciones de datos
+## Gráfico de area bajo la curva simple
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Multiples áreas</title>
-    <script src="https://d3js.org/d3.v3.min.js"></script>
-    <style>
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke-dasharray: 1;
-        stroke: #000;
-    }
-    </style>
+  <title>Área bajo la curva</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <div id="chart"></div>
-    <script type="text/javascript">
-        var margin = {top: 20, right: 10, bottom: 40, left: 60 }, // dimensiones
-            chartWidth = 960,
-            chartHeight = 500,
-            width = chartWidth - margin.left - margin.right,
-            height = chartHeight - margin.top - margin.bottom;
+  <div id="chart"></div>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script type="text/javascript">
+    var margin = { top: 40, right: 40, bottom: 40, left: 40 }, // colocamos los margenes para la imagen
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom
+        symbol = "IBM";
 
-        var svg = d3.select("#chart") // generamos el svg
-                    .append("svg")
-                    .attr("width", chartWidth)
-                    .attr("height", chartHeight)
-                    .append("g")
-                    .attr("transform", `translate(${margin.left} , ${margin.top})`);
+    var xScale = d3.time.scale().range([0, width]), // generamos las escalas de los ejes
+        yScale = d3.scale.linear().range([height, 0]);
 
-        var parse = d3.time.format("%m/%d/%y").parse; // formato para poder pasar la fecha a date
-
-        var xScale = d3.time.scale() // generamos las escalas lineales
-                            .range([0, width]);
-
-        var yScale = d3.scale.linear()
-                            .range([height, 0]);
-
-        var color = d3.scale.category10(); // color para cada area variará
-
-        var xAxis = d3.svg.axis() // generamos los ejes
+    var xAxis = d3.svg.axis() // generamos los ejes
                     .scale(xScale)
-                    .orient("bottom") // inferior
-                    .ticks(d3.time.days); // solo mostrará días
+                    .tickSize(-height);
 
-        var yAxis = d3.svg.axis()
-                        .scale(yScale)
-                        .orient("left")
-                        .tickSize(-width); // grilla horizontal
+    var yAxis = d3.svg.axis()
+                    .scale(yScale)
+                    .ticks(5) // cantidad de numeros en el eje
+                    .orient("right");
 
-        var stack = d3.layout.stack() // generamos el stack que después contendrá los datos
-                            .offset("zero") // de esta forma genera el formato querido
-                            .values(d => d.values)
-                            .x(d => d.date)
-                            .y(d => d.value);
+    var chart = d3.svg.area() // generamos el area bajo la curva del gráfico
+                    .x(d => xScale(d.date))
+                    .y0(height) // donde parte desde abajo
+                    .y1(d => yScale(d.price)); // hasta donde debe llegar
 
-        var area = d3.svg.area() // elemento para poder designar el área a ocupar
-                        .x(d => xScale(d.date))
-                        .y0(d => yScale(d.y0))
-                        .y1(d => yScale(d.y0 + d.y));
+    var line = d3.svg.line() // generamos una linea que delimitará el area
+                    .x(d => xScale(d.date))
+                    .y(d => yScale(d.price));
 
-        d3.csv("https://gist.githubusercontent.com/beayancan/f8bb6a13a53c6ea490bac7b6d0a6c6fe/raw/e334deac4a526e2c22e3fc3c1a6d89e583c60506/area-01.csv", function (error, data) {
-            if (error) throw error; // en caso de fallar
+    var svg = d3.select("#chart") // seleccionamos el div por su id
+        .append("svg") // agregamos el elemento svg
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // lo movemos de acuerdo a los margenes
 
-            data.forEach(function (d) { // hacemos la conversion de los datos a date y int
-                d.date = parse(d.date);
-                d.value = +d.value;
-            });
+    d3.csv("https://gist.githubusercontent.com/beayancan/ff536d7121c8b0a7321a1742efdd5663/raw/404dfcec859999c1cb9200c982e558a740e4c007/area-02.csv", type, function (error, data) {
+        if (error) throw error; // en caso de que falle el cargar los datos, nos dice del error
 
-            var layers = stack(d3.nest() // tomamos los datos y los agrupamos según el key
-                                .key(d => d.key)
-                                .entries(data));
+        xScale.domain([d3.min(data, d => d.date), d3.max(data, d => d.date)]); // dominio segun los datos
+        yScale.domain([0, d3.max(data, d => d.price)]).nice();
 
-            xScale.domain(d3.extent(data, d => d.date)); // entregamos el dominio ya con los datos cargados
-            yScale.domain([0, d3.max(data, d => d.y0 + d.y) *10/9 ]);
+        svg.datum(data)
+            .append("path") // para para generar el area
+            .attr("class", "area")
+            .attr("d", chart); // muestra el area del chart
 
-            svg.selectAll(".layer") // agregamos el layer/area de cada elemento
-                .data(layers)
-                .enter().append("path") // elemento para ingresar visualizaciones nuevas
-                .attr("class", "layer")
-                .attr("d", d => area(d.values)) // le entregamos el área en el formato adecuado
-                .style("fill", (d, i) => color(i)); // con un color adecuado
+        svg.append("g") // agregamos los ejes
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
 
-            svg.append("g") // añadimos los ejes
-                .attr("class", "x axis")
-                .attr("transform", `translate(0, ${height})`)
-                .call(xAxis);
+        svg.append("g")
+            .attr("class", "y axis")
+            .attr("transform", "translate(" + width + ",0)")
+            .call(yAxis);
 
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis);
-        });
-    </script>
+        svg.append("path") // path que nos permite mostrar la linea que delimita el area
+            .attr("class", "line") // se coloca después para que quede sobre las lineas de los ejes
+            .attr("d", line);
+
+        svg.append("text") // agregamos el nombre de los datos que se están leyendo
+            .attr("x", width - 6)
+            .attr("y", height - 6)
+            .attr("transform", "translate(" + -margin.left + ",0)")
+            .text(symbol);
+    });
+
+    var parse = d3.time.format("%b %Y").parse;
+
+    // Parse dates and numbers. We assume values are sorted by date.
+    // Also filter to one symbol; the S&P 500.
+    function type(d) {
+        d.date = parse(d.date);
+        d.price = +d.price;
+        if (d.symbol == symbol) return d;
+    }
+  </script>
 </body>
 </html>

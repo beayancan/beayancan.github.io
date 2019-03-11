@@ -24,8 +24,8 @@ mathjax: "true"
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script type="text/javascript">
     var margin = { top: 40, right: 40, bottom: 40, left: 40 }, // colocamos los margenes para la imagen
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom
+        width = 760 - margin.left - margin.right,
+        height = 380 - margin.top - margin.bottom
         symbol = "IBM";
 
     var xScale = d3.time.scale().range([0, width]), // generamos las escalas de los ejes

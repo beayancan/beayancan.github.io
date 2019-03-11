@@ -25,9 +25,9 @@ A continuación se presenta un gráfico de dispersión para comparar las notas d
   <h1 id='header' class="center"><i>Interacción y transición básicas</i></h1>
   <div id="chart"></div>
   <script type="text/javascript">
-    var margin = {top: 40, right: 0, bottom: 70, left: 100},
-        majorWidth = 600,
-        majorHeigth = 600, // dimensiones
+    var margin = {top: 40, right: 30, bottom: 70, left: 60},
+        majorWidth = 400,
+        majorHeigth = 400, // dimensiones
         radio = 7; // radio de los circulos
     //
     var width = majorWidth - margin.left - margin.right,

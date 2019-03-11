@@ -30,9 +30,9 @@ mathjax: "true"
 <body>
     <div id="chart"></div>
     <script type="text/javascript">
-        var margin = {top: 20, right: 10, bottom: 40, left: 60 }, // dimensiones
-            chartWidth = 960,
-            chartHeight = 500,
+		var margin = {top: 20, right: 60, bottom: 30, left: 60}, // dimensiones
+			chartWidth = 700,
+			chartHeight = 380,
             width = chartWidth - margin.left - margin.right,
             height = chartHeight - margin.top - margin.bottom;
 

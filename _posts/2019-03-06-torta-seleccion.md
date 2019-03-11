@@ -28,9 +28,9 @@ Se muestra un gráfico de torta simple para mostrar la proporción de un grupo d
     </div>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript">
-    var width = 960, // dimensiones
-        height = 500,
-        margin = 50,
+    var width = 780, // dimensiones
+        height = 400,
+        margin = 40,
         radio = Math.min(width, height) / 2;
 
     var color = d3.scale.category10();

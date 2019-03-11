@@ -17,7 +17,7 @@ mathjax: "true"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Área bajo la curva</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/area-simple.css">
 </head>
 <body>
   <div id="chart"></div>
